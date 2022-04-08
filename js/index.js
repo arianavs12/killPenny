@@ -9,21 +9,30 @@ const myGameArea = {
   canvas: document.querySelector("canvas"),
   frames: 0,
   start: function(){
-    this.canvas.width = 800
-    this.canvas.height = 700
+    this.canvas.width = 700
+    this.canvas.height = 600
     this.context = this.canvas.getContext("2d")
     this.interval = setInterval(updateGameArea,20)
     audio.play()
   },
 
+  winGame: function(){
+    const ganar = new Image()
+    ganar.src = "imagenes/win.png"
+    ganar.onload = this.context.drawImage(ganar,200,200,400,300);
+    
+
+  
+  },
   //background del canvas
   drawMoon: function(){
-    const moonImg = new Image()
-    moonImg.src = "imagenes/luna.jpg"
-    moonImg.onload = this.context.drawImage(moonImg,0,0,this.canvas.width,this.canvas.height)
+    const moonImg = new Image();
+    moonImg.src = "imagenes/luna.jpg";
+    moonImg.onload = this.context.drawImage(moonImg,0,0,this.canvas.width,this.canvas.height);
+    
   },
   clear: function(){
-    this.context.clearRect(0,0,this.canvas.width, this.canvas.height)
+    this.context.clearRect(0,0,this.canvas.width, this.canvas.height);
   },
 
   //score
@@ -34,10 +43,13 @@ const myGameArea = {
     this.context.fillText(score,75,50)
   },
   stop: function(){
-    audio.pause()
-    clearInterval(this.interval)
-  }
+    audio.pause();
+    clearInterval(this.interval);
+   
+  },
+
 }
+
 const updateGameArea = () => {
   myGameArea.frames = myGameArea.frames+1
   myGameArea.clear()
@@ -48,8 +60,15 @@ const updateGameArea = () => {
   myGameArea.showScore()
   checkGameOver()
 
-}
+  if(myPenny.score >= 95){
+    myGameArea.winGame()
+    if(myPenny.score >= 100){
+      myGameArea.stop()
+    }
+  
+  } 
 
+}
 //sumar score evadiendo obstaculos
 const updateObstacles = () => {
   for (let i=0; i<myObstacles.length; i++){
@@ -98,6 +117,9 @@ const checkGameOver = () => {
       return myPenny.crashWith(element)
   })
   if(crashed){
+    myGameArea.context.font = "bold 80px arial"
+    myGameArea.context.clearRect(0,0,myGameArea.canvas.width,myGameArea.canvas.height)
+    myGameArea.context.fillText("GAME OVER!",150,150);
       myGameArea.stop()
   }
   return
@@ -121,8 +143,8 @@ class Knive{
   constructor(x){
     this.y = 0;
     this.x = Math.floor(Math.random() * (800-106))+106;
-    this.width = 80;
-    this.height = 80;
+    this.width = 60;
+    this.height = 60;
     this.image = new Image();
     this.image.src = "imagenes/knive.png";
 
@@ -146,15 +168,15 @@ class Knive{
     ctx.drawImage(this.image,this.x,this.y,this.width,this.height)
   }
 }
-
+//intervalo de tiempo entre cada cuchillo
 const generateKnives = () => {
-  if(myGameArea.frames % 170 === 0){
+  if(myGameArea.frames % 50 === 0){
     const knive = new Knive();
     myObstacles.push(knive)
   }
 }
 
-const myPenny = new Penny(100, 110, 220, 575)
+const myPenny = new Penny(100, 110, 220, 490)
 window.onload = () => {
   document.getElementById('start-button').onclick = () => {
     startGame();
@@ -177,8 +199,3 @@ window.onload = () => {
   }
 };
 
-//funcion de game over y para ganar, 
-//importante subir repositorio
-//deṕloy
-//mejorarlo
-//

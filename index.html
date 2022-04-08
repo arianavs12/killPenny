@@ -8,18 +8,36 @@
     <title>Kill Penny</title>
 </head>
 <body>
-    <div class="game-intro">
-        <img src="./imagenes/killpenny.png" alt="" class="logo-img"></img>
+    <div class="container">
+        <div class="item" id="item1">
+            <img src="./imagenes/killpenny.png" alt="" class="logo" width="250px"></img>
+        </div>
         <br />
-        <p>Use the left and right arrows to avoid the knives</p>
-        <button id="start-button">Start</button>
-        <img src="./imagenes/arrow_keys_solo.png" alt="" class="arrows-img" />
+        <br />
+        <div class="item2">
+            <p>Marti has found Penny's secret hideout and now he wants <br> gain control over it, 
+                in order to commit his most <br>horrific crimes. 
+                But first, he needs to kill Penny so<br> he can take this horrendeous place.<br>
+                <br/>
+                Help Penny reach 100 points <br>before Martí stabs him with his knife.</p>
+        </div>
     </div>
-
-    <div id="game-board">
-        <canvas id="canvas" width="800" height="700"></canvas>
+    <br/>
+    <div class="down" >
+        <div class="instrucción">
+            <p>INSTRUCTIONS</p>
+            <p>Refresh the page to restart the game</p>
+            <p>Use the left and right arrows to avoid the knives</p>
+        </div>
+        <div class="personajes">
+            <img class="penny" src="./imagenes/pngwing.com (1).png" alt="" width="225px">
+            <img class="marti" src="./imagenes/Marti.png" alt="" width="200px">
+       </div>  
+       <div class="arrows">
+        <img src="./imagenes/arrow_keys_solo.png" alt="" width="250px"></img>
     </div>
-
-    <script type="text/javascript" src="js/index.js"></script>
+    <div class="next">
+        <a href="./about.html" id="about"><img id="play" src="./imagenes/next.png" alt="" width="100px"></a>
+   </div>     
 </body>
 </html>

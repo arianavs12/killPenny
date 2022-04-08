@@ -1,21 +1,7 @@
 body {
-    background-color: black;
+    background-image: url("imagenes/coco.jpg");
+    padding: 5%;
 }
-
-.logo-img {
-    width: 250px;
-}
-
-.game-intro p {
-    font-size: 18px;
-    font-family: cursive;
-    color: red;
-}
-
-.arrows-img {
-    width: 150px;
-}
-
 body button {
     font-size: 30px;
     background-color: rgb(224, 33, 33);
@@ -23,4 +9,33 @@ body button {
     padding: 20px 40px;
     border-radius: 5px;
     margin-bottom: 20px;
+}
+
+#canvas {
+    margin: 0 auto;
+    display: block;
+}
+
+.item {
+    float: left;
+}
+
+.item2 {
+    color: white;
+    font: oblique bold 150% cursive;
+    text-align: center;   
+}
+
+.instrucción {
+    font: oblique bold 150% cursive;
+    color: white;
+}
+
+.personajes {
+    float: right;
+    margin-right: 20%;
+}
+
+.next {
+    margin-left: 85%;
 }
